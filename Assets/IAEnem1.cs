@@ -43,6 +43,7 @@ public class IAEnem1 : MonoBehaviour
         if (direccion != direccionActual)
         {
             direccionActual = direccion;
+            enemigo.direcciones = new Vector3[] { direccion };
             persona.Rota(direccion);
         }
         persona.Mueve(direccion);
@@ -54,7 +55,7 @@ public class IAEnem1 : MonoBehaviour
         Controlador.Rutina(Instanciar<Controles>.Coger("Controles").duracionTurno, () => {
             if (enemigo.Visible())
             {
-                persona.Chocar(Vector3.back);
+                persona.Chocar(direccion);
                 return;
             }
         });

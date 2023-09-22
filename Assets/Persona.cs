@@ -63,7 +63,15 @@ public class Persona : MonoBehaviour
         {
             vida = 0;
 
-            /// *** Desactiva todos los scripts que podria tener ***
+            //Desactiva todos los scripts que podria tener *** MEJORAR
+            Controles des1 = GetComponent<Controles>();
+            if (des1 != null) des1.enabled = false;
+            IAEnem1 des2 = GetComponent<IAEnem1>();
+            if (des2 != null) des2.enabled = false;
+            IAEnem2 des3 = GetComponent<IAEnem2>();
+            if (des3 != null) des3.enabled = false;
+
+            GetComponent<BoxCollider>().enabled = false;
 
             if (tag == "Player")
             {
