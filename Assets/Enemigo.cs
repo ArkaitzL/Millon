@@ -51,4 +51,22 @@ public class Enemigo : MonoBehaviour
         return false;
     }
 
+    public bool Dañar(Transform trans, float radio, ref bool impacto) {
+        if (!impacto)
+        {
+            Collider[] colliders = Physics.OverlapSphere(trans.position, radio);
+
+            foreach (Collider col in colliders)
+            {
+                Persona persona = col.GetComponent<Persona>();
+                if (persona != null && !impacto && gameObject.tag != col.tag)
+                {
+                    persona.QuitarVida(daño);
+                    impacto = true;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

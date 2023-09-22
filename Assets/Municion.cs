@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemigo))]
 public class Municion : MonoBehaviour
 {
     [SerializeField] private float velocidad;
@@ -10,24 +11,20 @@ public class Municion : MonoBehaviour
     [HideInInspector] public Vector3 direccion;
     [HideInInspector] public int daño;
 
+    private Enemigo cuerpo;
     private bool impacto;
+
+    private void Start()
+    {
+        cuerpo = GetComponent<Enemigo>();
+    }
 
     void Update()
     {
         transform.position += direccion * velocidad * Time.deltaTime;
 
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radio);
-
-        foreach (Collider col in colliders)
-        {
-            Persona persona = col.GetComponent<Persona>();
-            if (persona != null && !impacto)
-            {
-                persona.QuitarVida(daño);
-                impacto = true;
-                Destroy(gameObject, .1f);
-            }
+        if (cuerpo.Dañar(transform, radio, ref impacto)) {
+            Destroy(gameObject, .1f);
         }
     }
 }

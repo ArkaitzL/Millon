@@ -12,13 +12,13 @@ public class Persona : MonoBehaviour
     [SerializeField] private int casillas;
     [SerializeField] private int vida = 1;
 
-    public void Mueve(Vector3 direccion)
+    public void Mueve(Vector3 direccion, int incremento = 0)
     {
         float duracion = Instanciar<Controles>.Coger("Controles").duracionTurno;
 
         Controlador.Mover(transform, new Movimiento(
             duracion,
-            transform.position + (direccion.normalized * casillas),
+            transform.position + (direccion.normalized * (casillas + incremento)),
             animacion
         ));
     }
@@ -63,17 +63,17 @@ public class Persona : MonoBehaviour
         {
             vida = 0;
 
+            /// *** Desactiva todos los scripts que podria tener ***
+
             if (tag == "Player")
             {
-                GetComponent<Controles>().enabled = false;
+                Debug.Log("GAMEOVER!!");
             }
             if (animacion)
             {
                 Particulas();
                 transform.GetChild(0).gameObject.SetActive(false);
             }
-
-            Debug.Log("GAMEOVER!!");
         }
 
         /// *** Cambiar el UI ***

@@ -9,6 +9,7 @@ public class Controles : MonoBehaviour
 {
     [SerializeField] private float deslizamientoMin = 50f;
     [SerializeField] public float duracionTurno;
+    [SerializeField] public bool modoRapido;
 
     public event Action InicioTurno;
     private Vector2 inicialPos;
@@ -17,6 +18,10 @@ public class Controles : MonoBehaviour
     private void Awake()
     {
         Instanciar<Controles>.Añadir("Controles", this, gameObject);
+        if (modoRapido)
+        {
+            duracionTurno /= 2;
+        }
     }
     private void Update()
     {
@@ -94,7 +99,7 @@ public class Controles : MonoBehaviour
 
         if (Controlador.Esperando("Turno"))
         {
-            Controlador.IniciarEspera("Turno", duracionTurno);
+            Controlador.IniciarEspera("Turno", duracionTurno*2);
 
             //ANTES TURNO
 

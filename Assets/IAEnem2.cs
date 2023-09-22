@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Enemigo))]
-public class IADisparo : MonoBehaviour
+public class IAEnem2 : MonoBehaviour
 {
     private bool detectado;
-    private Enemigo cuerpo;
+    private Enemigo enemigo;
 
     void Start()
     {
-        cuerpo = GetComponent<Enemigo>();
+        enemigo = GetComponent<Enemigo>();
         Instanciar<Controles>.Coger("Controles").InicioTurno += Inicio;
     }
 
@@ -22,29 +22,29 @@ public class IADisparo : MonoBehaviour
         {
             Disparar();
 
-            cuerpo.AlterarAlerta(false);
+            enemigo.AlterarAlerta(false);
             detectado = false;
 
             return;
         }
 
         //Si no tiene un objetivo
-        if (cuerpo.Visible())
+        if (enemigo.Visible())
         {
-            cuerpo.AlterarAlerta(true);
+            enemigo.AlterarAlerta(true);
             detectado = true;
         }
     }
 
     private void Disparar() {
         GameObject municion = Resources.Load<GameObject>("P3_Municion");
-        foreach (Vector3 direccion in cuerpo.direcciones)
+        foreach (Vector3 direccion in enemigo.direcciones)
         {
             municion = Instantiate(municion, transform);
             municion.GetComponent<Municion>().direccion = direccion;
-            municion.GetComponent<Municion>().daño = cuerpo.daño;
+            municion.GetComponent<Municion>().daño = enemigo.daño;
 
-            //Destroy(municion, 7.5f);
+            Destroy(municion, 5f);
         }
     }
 
