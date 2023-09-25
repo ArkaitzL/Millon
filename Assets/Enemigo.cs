@@ -34,7 +34,7 @@ public class Enemigo : MonoBehaviour
     }
 
     //Visibilidad
-    public bool Visible() 
+    public bool Visible(out Vector3 miDireccion) 
     {
         foreach (Vector3 direccion in direcciones)
         {
@@ -44,12 +44,19 @@ public class Enemigo : MonoBehaviour
             if (Physics.Raycast(rayo, out hitInfo, rango))
             {
                 if (hitInfo.collider.CompareTag("Player")) {
+                    miDireccion = direccion;
                     return true;
                 }
             }
         }
+        miDireccion = Vector3.zero;
         return false;
     }
+    public bool Visible() {
+        Vector3 nulo;
+        return Visible(out nulo);
+    }
+
 
     public bool Dañar(Transform trans, float radio, ref bool impacto) {
         if (!impacto)

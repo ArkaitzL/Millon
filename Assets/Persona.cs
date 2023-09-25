@@ -17,7 +17,7 @@ public class Persona : MonoBehaviour
         float duracion = Instanciar<Controles>.Coger("Controles").duracionTurno;
 
         Controlador.Mover(transform, new Movimiento(
-            duracion,
+            (incremento > 0) ? (duracion / 2) * incremento : duracion,
             transform.position + (direccion.normalized * (casillas + incremento)),
             animacion
         ));

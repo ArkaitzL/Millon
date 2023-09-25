@@ -9,11 +9,11 @@ using BaboOnLite;
 public class IAEnem1 : MonoBehaviour
 {
     [SerializeField] Ruta[] ruta;
+    [SerializeField] private Direccion direccionActual;
 
     private Enemigo enemigo;
     private Persona persona;
 
-    private Vector3 direccionActual = Vector3.back;
     private int rutaNum, pasosNum;
     private bool impacto;
 
@@ -40,9 +40,9 @@ public class IAEnem1 : MonoBehaviour
         }
 
         Vector3 direccion = ruta[rutaNum].direccion.Get();
-        if (direccion != direccionActual)
+        if (direccion != direccionActual.Get())
         {
-            direccionActual = direccion;
+            direccionActual.Set(direccion);
             enemigo.direcciones = new Vector3[] { direccion };
             persona.Rota(direccion);
         }
@@ -65,40 +65,16 @@ public class IAEnem1 : MonoBehaviour
     {
         enemigo.Dañar(transform, .32f, ref impacto);
     }
+
+    //DESTRUIR
+    public void OnDestroy()
+    {
+        Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
+    }
 }
 
 [Serializable]
 public class Ruta {
     public int distancia;
     public Direccion direccion;
-
-    [Serializable]
-    public class Direccion
-    {
-        public enum Opcion
-        {
-            Adelante,
-            Atras,
-            Izquierda,
-            Derecha
-        }
-
-        public Opcion seleccion;
-
-        public Vector3 Get() {
-            switch (seleccion)
-            {
-                case Direccion.Opcion.Adelante:
-                    return Vector3.forward;
-                case Direccion.Opcion.Atras:
-                    return Vector3.back;
-                case Direccion.Opcion.Izquierda:
-                    return Vector3.left;
-                case Direccion.Opcion.Derecha:
-                    return Vector3.right;
-            }
-
-            return Vector3.zero;
-        }
-    }
 }
