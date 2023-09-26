@@ -24,7 +24,7 @@ public class IAEnem3 : MonoBehaviour
     private void Update()
     {
         /// *** No funciona
-        enemigo.Dañar(transform, .4f, ref impacto);
+        enemigo.Dañar(transform, .32f, ref impacto);
     }
 
     private void Inicio() 
@@ -81,6 +81,7 @@ public class IAEnem3 : MonoBehaviour
                 persona.Mueve(direccionActual.Get(), distancia-2);
                 break;
             }
+
         }
 
     }
