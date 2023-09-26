@@ -23,7 +23,7 @@ public class Municion : MonoBehaviour
     {
         transform.position += direccion * velocidad * Time.deltaTime;
 
-        if (cuerpo.Dañar(transform, radio, ref impacto)) {
+        if (cuerpo.Dañar(transform, radio, ref impacto, false)) {
             Destroy(gameObject, .1f);
         }
     }

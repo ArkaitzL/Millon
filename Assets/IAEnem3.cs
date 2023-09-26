@@ -23,7 +23,6 @@ public class IAEnem3 : MonoBehaviour
     }
     private void Update()
     {
-        /// *** No funciona
         enemigo.Dañar(transform, .32f, ref impacto);
     }
 
@@ -57,9 +56,6 @@ public class IAEnem3 : MonoBehaviour
 
     private void Estampar() 
     {
-        ///*** Mirar tambien si hay algo adelante: Un personaje, un bloque...
-        ///     Si es una persona se mueve hasta la persona
-        ///     Si no uno antes como con el suelo
 
         Vector3 posicionInicial = transform.position.Y(-1f);
         int distancia = 1;
@@ -69,16 +65,27 @@ public class IAEnem3 : MonoBehaviour
         while (distancia < distanciaMax)
         {
             // Lanza un rayo desde la posición actual
-            Collider[] colliders = Physics.OverlapSphere(posicionInicial + (direccionActual.Get() * distancia), 0.1f);
+            Collider[] suelo = Physics.OverlapSphere(posicionInicial + (direccionActual.Get() * distancia), 0.1f);
+            Collider[] superficie = Physics.OverlapSphere(transform.position + (direccionActual.Get() * distancia), 0.1f);
 
-            if (colliders.Length > 0)
+
+            bool condicion = superficie.Length == 0;
+            if (!condicion)
+            {
+                if (superficie.Some((col) => col.CompareTag("Player")))
+                {
+                    condicion = true;
+                }
+            }
+
+            if (suelo.Length > 0 && condicion)
             {
                 distancia++;
             }
             else
             {
                 // Si no chocamos con ningún collider, hemos llegado al final
-                persona.Mueve(direccionActual.Get(), distancia-2);
+                persona.Mueve(direccionActual.Get(), distancia - 2);
                 break;
             }
 
@@ -87,7 +94,12 @@ public class IAEnem3 : MonoBehaviour
     }
 
     //DESTRUIR
-    public void OnDestroy()
+    private void OnDestroy()
+    {
+        Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
+    }
+
+    private void OnDisable()
     {
         Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
     }

@@ -58,22 +58,35 @@ public class Enemigo : MonoBehaviour
     }
 
 
-    public bool Dañar(Transform trans, float radio, ref bool impacto) {
+    public bool Dañar(Transform trans, float radio, ref bool impacto, bool personaDetecta = true) {
         if (!impacto)
         {
             Collider[] colliders = Physics.OverlapSphere(trans.position, radio);
 
             foreach (Collider col in colliders)
             {
-                Persona persona = col.GetComponent<Persona>();
-                if (persona != null && !impacto && gameObject.tag != col.tag)
+                if (gameObject.tag != col.tag)
                 {
-                    persona.QuitarVida(daño);
-                    impacto = true;
-                    return true;
-                }
+                    ///***NO DETECTA AL TORO
+                    Persona persona = col.GetComponent<Persona>();
+                    if (persona != null)
+                    {
+                        Debug.Log(col.name);
+                        persona.QuitarVida(daño);
+                        impacto = true;
+                        return true;
+                    }
+                }     
             }
+
+            ///***BUG SE AUTODESTRUIE
+            //if (!personaDetecta && colliders.Length > 0 && !colliders.Some((col) => gameObject.tag != col.tag))
+            //{
+            //    impacto = true;
+            //    return true;
+            //}
         }
         return false;
     }
+
 }

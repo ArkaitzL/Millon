@@ -67,7 +67,12 @@ public class IAEnem1 : MonoBehaviour
     }
 
     //DESTRUIR
-    public void OnDestroy()
+    private void OnDestroy()
+    {
+        Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
+    }
+
+    private void OnDisable()
     {
         Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
     }

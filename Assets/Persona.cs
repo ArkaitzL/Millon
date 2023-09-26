@@ -70,7 +70,8 @@ public class Persona : MonoBehaviour
             if (des2 != null) des2.enabled = false;
             IAEnem2 des3 = GetComponent<IAEnem2>();
             if (des3 != null) des3.enabled = false;
-
+            IAEnem3 des4 = GetComponent<IAEnem3>();
+            if (des4 != null) des4.enabled = false;
             GetComponent<BoxCollider>().enabled = false;
 
             if (tag == "Player")
@@ -105,7 +106,9 @@ public class Persona : MonoBehaviour
                 Destroy(particula.gameObject, UnityEngine.Random.Range(3F, 5F));
             }
         });
+
     }
+
 
     [Serializable]
     public class Particula
