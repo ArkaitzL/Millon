@@ -67,11 +67,9 @@ public class Enemigo : MonoBehaviour
             {
                 if (gameObject.tag != col.tag)
                 {
-                    ///***NO DETECTA AL TORO
                     Persona persona = col.GetComponent<Persona>();
                     if (persona != null)
                     {
-                        Debug.Log(col.name);
                         persona.QuitarVida(daño);
                         impacto = true;
                         return true;

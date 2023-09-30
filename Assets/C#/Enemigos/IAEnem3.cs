@@ -65,8 +65,10 @@ public class IAEnem3 : MonoBehaviour
         while (distancia < distanciaMax)
         {
             // Lanza un rayo desde la posición actual
+            int exceptTrigger = ~LayerMask.GetMask("Trigger");
+
             Collider[] suelo = Physics.OverlapSphere(posicionInicial + (direccionActual.Get() * distancia), 0.1f);
-            Collider[] superficie = Physics.OverlapSphere(transform.position + (direccionActual.Get() * distancia), 0.1f);
+            Collider[] superficie = Physics.OverlapSphere(transform.position + (direccionActual.Get() * distancia), 0.1f, exceptTrigger);
 
 
             bool condicion = superficie.Length == 0;

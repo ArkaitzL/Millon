@@ -30,6 +30,16 @@ public class IAEnem1 : MonoBehaviour
         //Reiniciar impacto
         impacto = false;
 
+
+        //Golpera al enemigo si esta delante
+        Controlador.Rutina(Instanciar<Controles>.Coger("Controles").duracionTurno, () => {
+            if (enemigo.Visible())
+            {
+                persona.Chocar(direccionActual.Get());
+                return;
+            }
+        });
+
         //Girar o moverse siguindeo la ruta
         if (ruta[rutaNum].distancia == pasosNum)
         {

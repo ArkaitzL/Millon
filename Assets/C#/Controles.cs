@@ -10,14 +10,17 @@ public class Controles : MonoBehaviour
     [SerializeField] private float deslizamientoMin = 50f;
     [SerializeField] public float duracionTurno;
     [SerializeField] public bool modoRapido;
+    [SerializeField] public float dañoCaida = 3f;
 
     public event Action InicioTurno;
     private Vector2 inicialPos;
-
+    private bool caiendo;
+    private Persona personaje;
 
     private void Awake()
     {
         Instanciar<Controles>.Añadir("Controles", this, gameObject);
+        personaje = GetComponent<Persona>();
         if (modoRapido)
         {
             duracionTurno /= 2;
@@ -25,8 +28,25 @@ public class Controles : MonoBehaviour
     }
     private void Update()
     {
-        Movil();
-        PC();
+        if (caiendo)
+        {
+            Ray rayo = new Ray(transform.position, Vector3.down);
+            RaycastHit hit;
+            if (Physics.Raycast(rayo, out hit, .6f) && !hit.collider.isTrigger) {
+                GetComponent<Rigidbody>().isKinematic = true;
+                caiendo = false;
+
+                if (transform.position.y < -1)
+                {
+                    personaje.QuitarVida(100, false);
+                }
+            }
+        }
+        else
+        {
+            Movil();
+            PC();
+        }
     }
 
     private void Movil()
@@ -88,7 +108,6 @@ public class Controles : MonoBehaviour
     //SISTEMA DE TURNOS
     private void Turno(int i) 
     {
-        Persona personaje = GetComponent<Persona>();
         Vector3[] direcciones = {
             Vector3.forward,
             Vector3.back,
@@ -111,7 +130,9 @@ public class Controles : MonoBehaviour
 
             //--Comporobar si se puede mover--
             Ray rayo = new Ray(transform.position, direcciones[i]);
-            if (Physics.Raycast(rayo, 1f))
+            RaycastHit hit;
+
+            if (Physics.Raycast(rayo, out hit, 1f) && !hit.collider.isTrigger)
             {
                 personaje.Chocar(direcciones[i]);
                 return;
@@ -135,10 +156,10 @@ public class Controles : MonoBehaviour
 
                 //--Comprobar caida--
                 Ray rayo = new Ray(transform.position, Vector3.down);
-                if (!Physics.Raycast(rayo, 1f))
+                if (!Physics.Raycast(rayo, out hit, .6f) || (Physics.Raycast(rayo, out hit, .6f) && hit.collider.isTrigger))
                 {
+                    caiendo = true;
                     GetComponent<Rigidbody>().isKinematic = false;
-                    personaje.QuitarVida(100, false);
                 }
             });
         }
