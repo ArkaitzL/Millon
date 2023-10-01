@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bb481053a27be9d4cbda5dac7b5d69a0, type: 3}
       propertyPath: m_Name
-      value: Enemigo[1] Variant
+      value: Enemigo[1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb481053a27be9d4cbda5dac7b5d69a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: bb481053a27be9d4cbda5dac7b5d69a0, type: 3}
       propertyPath: m_TagString
@@ -189,3 +193,5 @@ MonoBehaviour:
   - distancia: 3
     direccion:
       seleccion: 0
+  direccionActual:
+    seleccion: 1

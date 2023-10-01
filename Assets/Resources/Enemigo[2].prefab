@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e1f056c5c2ce03741a9d4ed68ef49361, type: 3}
       propertyPath: m_Name
-      value: Enemigo[2] Variant
+      value: Enemigo[2]
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e1f056c5c2ce03741a9d4ed68ef49361, type: 3}
       propertyPath: m_TagString
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca88db3b7e8f8ce438e435fdb360cb1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rango: 4
+  rango: 5
   direcciones:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}

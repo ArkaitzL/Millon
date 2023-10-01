@@ -61,7 +61,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!65 &614242138830901449
 BoxCollider:
@@ -82,7 +82,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99, y: 0.99, z: 0.99}
+  m_Size: {x: 0.95, y: 0.95, z: 0.95}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1389618399343484586
 MonoBehaviour:
@@ -154,6 +154,7 @@ MonoBehaviour:
   deslizamientoMin: 50
   duracionTurno: 0.25
   modoRapido: 1
+  "da\xF1oCaida": 3
 --- !u!1001 &4083675507748730837
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Enemigo : MonoBehaviour
     }
 
     //Visibilidad
-    public bool Visible(out Vector3 miDireccion) 
+    public bool Visible(out Vector3 miDireccion, bool cualquiera = false) 
     {
         foreach (Vector3 direccion in direcciones)
         {
@@ -43,22 +43,30 @@ public class Enemigo : MonoBehaviour
 
             if (Physics.Raycast(rayo, out hitInfo, rango))
             {
-                if (hitInfo.collider.CompareTag("Player")) {
-                    miDireccion = direccion;
-                    return true;
+                Persona persona = hitInfo.collider.GetComponent<Persona>();
+                if (persona != null)
+                {
+                    if (hitInfo.collider.CompareTag("Player") || cualquiera)
+                    {
+                        miDireccion = direccion;
+                        return true;
+                    }
                 }
             }
         }
         miDireccion = Vector3.zero;
         return false;
     }
-    public bool Visible() {
+    public bool Visible(bool cualquiera = false) {
         Vector3 nulo;
-        return Visible(out nulo);
+        return Visible(out nulo, cualquiera);
     }
 
 
-    public bool Dañar(Transform trans, float radio, ref bool impacto, bool personaDetecta = true) {
+    public bool Dañar(Transform trans, float radio, ref bool impacto, bool soloPersonas = true) {
+
+        bool estado = false;
+
         if (!impacto)
         {
             Collider[] colliders = Physics.OverlapSphere(trans.position, radio);
@@ -72,19 +80,17 @@ public class Enemigo : MonoBehaviour
                     {
                         persona.QuitarVida(daño);
                         impacto = true;
-                        return true;
+                        estado = true;
+                    }
+                    else if(!soloPersonas && gameObject.tag != col.tag)
+                    {
+                        impacto = true;
+                        estado = true;
                     }
                 }     
             }
-
-            ///***BUG SE AUTODESTRUIE
-            //if (!personaDetecta && colliders.Length > 0 && !colliders.Some((col) => gameObject.tag != col.tag))
-            //{
-            //    impacto = true;
-            //    return true;
-            //}
         }
-        return false;
+        return estado;
     }
 
 }

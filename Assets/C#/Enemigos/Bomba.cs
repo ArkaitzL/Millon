@@ -1,32 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BaboOnLite;
 
 [RequireComponent(typeof(Enemigo))]
-[RequireComponent(typeof(Persona))]
-
-public class IAEnem4 : MonoBehaviour
+public class Bomba : MonoBehaviour
 {
-
     private Enemigo enemigo;
-    private Persona persona;
     private bool impacto;
 
     void Start()
     {
         enemigo = GetComponent<Enemigo>();
-        persona = GetComponent<Persona>();
 
         Instanciar<Controles>.Coger("Controles").InicioTurno += Inicio;
     }
 
-    void Update()
-    {
-        enemigo.Dañar(transform, .32f, ref impacto);
+    private void Inicio() {
+        Daño();
+        Controlador.Rutina(Instanciar<Controles>.Coger("Controles").duracionTurno, () => {
+            Daño();
+        });
     }
+    private void Daño() {
+        if (enemigo.Visible(true) && !impacto)
+        {
+            /// Animacion ***
+            enemigo.Dañar(transform, 1f, ref impacto);
 
-    private void Inicio() { 
-    
+            GetComponent<BoxCollider>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     //DESTRUIR
@@ -39,5 +43,4 @@ public class IAEnem4 : MonoBehaviour
     {
         Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
     }
-
 }

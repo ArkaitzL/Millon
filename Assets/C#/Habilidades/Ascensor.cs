@@ -35,7 +35,7 @@ public class Ascensor : MonoBehaviour
 
             if (Physics.Raycast(rayo, out hitInfo, rango))
             {
-                if (hitInfo.collider.GetComponent<Persona>() != null)
+                if (hitInfo.collider.tag == "Player")
                 {
                     Transform obj = hitInfo.collider.transform;
                     obj.SetParent(transform.GetChild(0));
@@ -58,8 +58,6 @@ public class Ascensor : MonoBehaviour
             new Vector3(0, destino, 0),
             animacion
         ));
-
-        
     }
 
     //DESTRUIR
