@@ -72,17 +72,18 @@ public class Persona : MonoBehaviour
             if (des3 != null) des3.enabled = false;
             IAEnem3 des4 = GetComponent<IAEnem3>();
             if (des4 != null) des4.enabled = false;
-            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
 
             if (tag == "Player")
             {
                 Debug.Log("GAMEOVER!!");
             }
-            if (animacion)
-            {
-                Particulas();
-                transform.GetChild(0).gameObject.SetActive(false);
-            }
+            if (animacion)  Particulas();
         }
 
         /// *** Cambiar el UI ***

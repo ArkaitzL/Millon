@@ -23,7 +23,7 @@ public class IAEnem3 : MonoBehaviour
     }
     private void Update()
     {
-        enemigo.Dañar(transform, .32f, ref impacto);
+        enemigo.Dañar(transform, .4f, ref impacto);
     }
 
     private void Inicio() 

@@ -2,42 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Enemigo))]
 [RequireComponent(typeof(Persona))]
+[RequireComponent(typeof(Enemigo))]
 
-public class IAEnem4 : MonoBehaviour
+public class IAEnem4 : IA
 {
-
     private Enemigo enemigo;
     private Persona persona;
-    private bool impacto;
 
     void Start()
     {
+        Iniciar();
+
         enemigo = GetComponent<Enemigo>();
         persona = GetComponent<Persona>();
-
-        Instanciar<Controles>.Coger("Controles").InicioTurno += Inicio;
     }
 
     void Update()
     {
-        enemigo.Dañar(transform, .32f, ref impacto);
+        enemigo.Dañar(transform, .45f, ref impacto);
     }
 
-    private void Inicio() { 
-    
-    }
+    override protected void Inicio() {
 
-    //DESTRUIR
-    private void OnDestroy()
-    {
-        Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
-    }
+        if (enemigo.Visible())
+        {
 
-    private void OnDisable()
-    {
-        Instanciar<Controles>.Coger("Controles").InicioTurno -= Inicio;
+            enemigo.AlterarAlerta(true);
+        }
+        else {
+            enemigo.AlterarAlerta(false);
+        }
     }
-
 }

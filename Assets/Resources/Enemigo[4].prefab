@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,23 +18,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_Name
-      value: Enemigo[4] Variant
+      value: Enemigo[4]
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       propertyPath: m_IsActive
@@ -66,15 +66,115 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 582157989783399423}
+      addedObject: {fileID: 696668460179403551}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7656590318408162954}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6237994672018534428}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9166386869106213032}
   m_SourcePrefab: {fileID: 100100000, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
 --- !u!1 &6099398548373304816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2207a4cb7b653954b8fd191179212c81, type: 3}
   m_PrefabInstance: {fileID: 6369219587197618337}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &582157989783399423
-BoxCollider:
+--- !u!114 &696668460179403551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099398548373304816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06f8c6df2a14df4888b93df5838a4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animacion:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  particulas:
+  - color:
+      serializedVersion: 2
+      rgba: 9332814
+    cantidad: 7
+  - color:
+      serializedVersion: 2
+      rgba: 8038770
+    cantidad: 12
+  - color:
+      serializedVersion: 2
+      rgba: 4146789
+    cantidad: 5
+  - color:
+      serializedVersion: 2
+      rgba: 4475983
+    cantidad: 3
+  casillas: 1
+  vida: 1
+--- !u!114 &7656590318408162954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099398548373304816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca88db3b7e8f8ce438e435fdb360cb1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rango: 3
+  direcciones:
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
+  - {x: 0.5, y: 0, z: 0.5}
+  - {x: -0.5, y: 0, z: 0.5}
+  - {x: 0.5, y: 0, z: -0.5}
+  - {x: -0.5, y: 0, z: -0.5}
+  - {x: 0, y: 1, z: 0}
+  "da\xF1o": 1
+--- !u!114 &6237994672018534428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6099398548373304816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8882416cd50309b4fad02e25b3e1cd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &9166386869106213032
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -91,6 +191,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
