@@ -154,6 +154,19 @@ public class Controles : MonoBehaviour
                 //--Mover lo demas--
                 InicioTurno?.Invoke();
 
+                //--Comprobar si hay hierba--
+                Collider[] colliders = Physics.OverlapSphere(transform.position, .4f);
+                if (colliders.Some((e) =>  e.gameObject.layer == LayerMask.NameToLayer("Trigger") && e.tag != "Player" ))  {
+                    gameObject.layer = LayerMask.NameToLayer("Trigger");
+                }
+                else if (gameObject.layer != LayerMask.NameToLayer("Default"))
+                {
+                    gameObject.layer = LayerMask.NameToLayer("Default");
+                }
+
+
+
+
                 //--Comprobar caida--
                 Ray rayo = new Ray(transform.position, Vector3.down);
                 if (!Physics.Raycast(rayo, out hit, .6f) || (Physics.Raycast(rayo, out hit, .6f) && hit.collider.isTrigger))

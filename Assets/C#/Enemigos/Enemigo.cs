@@ -62,6 +62,20 @@ public class Enemigo : MonoBehaviour
         return Visible(out nulo, cualquiera);
     }
 
+    public bool VerPlayer(Transform trans, int rango) {
+        Collider[] colliders = Physics.OverlapSphere(trans.position, rango);
+
+        foreach (Collider col in colliders) {
+     
+            if (col.tag == "Player" && col.gameObject.layer != LayerMask.NameToLayer("Trigger"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
     public bool Dañar(Transform trans, float radio, ref bool impacto, bool soloPersonas = true) {
 

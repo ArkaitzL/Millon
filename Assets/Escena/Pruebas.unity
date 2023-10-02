@@ -3402,6 +3402,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 623610785}
     m_Modifications:
+    - target: {fileID: 5776559233182538213, guid: 69b598e5773af04429fb3758954ea7e5, type: 3}
+      propertyPath: rango
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7430551470488636541, guid: 69b598e5773af04429fb3758954ea7e5, type: 3}
       propertyPath: m_Name
       value: Ascensor
@@ -7441,6 +7445,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo[3]
       objectReference: {fileID: 0}
+    - target: {fileID: 6322220647162477518, guid: fe7dc87165444d0408319e9325e31e6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6698781747698606452, guid: fe7dc87165444d0408319e9325e31e6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -7498,6 +7506,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo[4]
       objectReference: {fileID: 0}
+    - target: {fileID: 6099398548373304816, guid: 50e2726b4c97bff4baee1451df0b06b6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237994672018534428, guid: 50e2726b4c97bff4baee1451df0b06b6, type: 3}
+      propertyPath: rangoVision
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6912667010608574282, guid: 50e2726b4c97bff4baee1451df0b06b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -7538,6 +7554,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7656590318408162954, guid: 50e2726b4c97bff4baee1451df0b06b6, type: 3}
+      propertyPath: rango
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7557,7 +7577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346197492514076978, guid: 37b1521352f6c86449fa196b9108c553, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6346197492514076978, guid: 37b1521352f6c86449fa196b9108c553, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7565,7 +7585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346197492514076978, guid: 37b1521352f6c86449fa196b9108c553, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6346197492514076978, guid: 37b1521352f6c86449fa196b9108c553, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7611,6 +7631,10 @@ PrefabInstance:
     - target: {fileID: 1306192776032127532, guid: 778f7397959b1a642a5980af2105af77, type: 3}
       propertyPath: m_Name
       value: Enemigo[2]
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306192776032127532, guid: 778f7397959b1a642a5980af2105af77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1831654174344073366, guid: 778f7397959b1a642a5980af2105af77, type: 3}
       propertyPath: m_LocalPosition.x
