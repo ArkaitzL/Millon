@@ -72,6 +72,8 @@ public class Persona : MonoBehaviour
             if (des3 != null) des3.enabled = false;
             IAEnem3 des4 = GetComponent<IAEnem3>();
             if (des4 != null) des4.enabled = false;
+            IAEnem4 des5 = GetComponent<IAEnem4>();
+            if (des5 != null) des5.enabled = false;
             GetComponent<CapsuleCollider>().enabled = false;
 
             for (int i = 0; i < transform.childCount; i++)

@@ -35,6 +35,7 @@ public class IAEnem4 : IA
 
         Controlador.Rutina(Instanciar<Controles>.Coger("Controles").duracionTurno * .01f, () => {
 
+            //Comprueba si ha salido de su rango de vision
             if (!enemigo.VerPlayer(transform, rangoVision))
             {
                 enemigo.AlterarAlerta(false);
@@ -43,36 +44,44 @@ public class IAEnem4 : IA
                 return;
             }
 
-            Vector3 direccion = Vector3.zero;
-            if (enemigo.Visible(out direccion))
+            //Golpear al perdsonaje
+            Vector3 apuntar = Vector3.zero;
+            if (enemigo.Visible(out apuntar))
             {
-                persona.Rota(direccion);
-                persona.Chocar(direccion);
-
-                return;
+                persona.Chocar(apuntar);
             }
 
+
+            //La IA del movimiento
             if (detectado)
             {
+                //Decide la direccion
+                Vector3 direccion = Vector3.zero;
+
                 float x = transform.position.x - player.position.x;
                 float z = transform.position.z - player.position.z;
 
-                if (Mathf.Abs(x) > Mathf.Abs(z))
-                {
-                    direccion = new Vector3(x, 0, 0);
+                direccion = (Mathf.Abs(x) > Mathf.Abs(z)) 
+                    ? new Vector3(x, 0, 0) 
+                    :  new Vector3(0, 0, z);
 
-                    persona.Rota(direccion);
-                    persona.Mueve(direccion * -1);
-                }
-                else
-                {
-                    direccion = new Vector3(0, 0, z);
+                persona.Rota(direccion);
 
-                    persona.Rota(direccion);
-                    persona.Mueve(direccion * -1);
+                //Si hay algo delante le coliciona
+                Ray rayo = new Ray(transform.position, direccion * -1);
+                RaycastHit hit;
+
+                if (Physics.Raycast(rayo, out hit, 1f) && !hit.collider.isTrigger)
+                {
+                    persona.Chocar(direccion);
+                    return;
                 }
+
+                //Mueve el personaje
+                persona.Mueve(direccion * -1);
             }
 
+            //Añade al jugador si esta dentro de su rango de vision
             if (enemigo.VerPlayer(transform, rangoVision))
             {
                 enemigo.AlterarAlerta(true);

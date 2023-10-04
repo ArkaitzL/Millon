@@ -38,7 +38,10 @@ public class Enemigo : MonoBehaviour
     {
         foreach (Vector3 direccion in direcciones)
         {
-            Ray rayo = new Ray(transform.position, direccion);
+            //Vector3 direccionLocal = transform.TransformDirection(direccion);
+            Vector3 direccionLocal = direccion;
+
+            Ray rayo = new Ray(transform.position, direccionLocal);
             RaycastHit hitInfo;
 
             if (Physics.Raycast(rayo, out hitInfo, rango))
@@ -48,7 +51,7 @@ public class Enemigo : MonoBehaviour
                 {
                     if (hitInfo.collider.CompareTag("Player") || cualquiera)
                     {
-                        miDireccion = direccion;
+                        miDireccion = direccionLocal;
                         return true;
                     }
                 }
@@ -98,8 +101,11 @@ public class Enemigo : MonoBehaviour
                     }
                     else if(!soloPersonas && gameObject.tag != col.tag)
                     {
-                        impacto = true;
-                        estado = true;
+                        if (col.gameObject.layer != LayerMask.NameToLayer("Trigger"))
+                        {
+                            impacto = true;
+                            estado = true;
+                        }
                     }
                 }     
             }

@@ -164,9 +164,6 @@ public class Controles : MonoBehaviour
                     gameObject.layer = LayerMask.NameToLayer("Default");
                 }
 
-
-
-
                 //--Comprobar caida--
                 Ray rayo = new Ray(transform.position, Vector3.down);
                 if (!Physics.Raycast(rayo, out hit, .6f) || (Physics.Raycast(rayo, out hit, .6f) && hit.collider.isTrigger))

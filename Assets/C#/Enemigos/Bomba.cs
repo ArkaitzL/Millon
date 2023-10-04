@@ -28,7 +28,7 @@ public class Bomba : MonoBehaviour
             /// Animacion ***
             enemigo.Dañar(transform, 1f, ref impacto);
 
-            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
         }
     }

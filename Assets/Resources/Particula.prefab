@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 969669682459325840}
   - component: {fileID: 6160528676685170015}
   - component: {fileID: 72041580889590233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Particula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
